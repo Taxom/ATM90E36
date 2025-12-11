@@ -420,7 +420,7 @@ bool ATM90E36::calibrationError()
     CS0 = false;
   } 
 
-  if (systemstatus0 & 0x0100)
+  if (systemstatus0 & 0x1000)
   {
     CS1 = true; 
   } 
@@ -491,7 +491,7 @@ void ATM90E36::begin()
   //Set metering config values (CONFIG)
   CommEnergyIC(WRITE, ConfigStart, 0x5678); // Metering calibration startup 
   CommEnergyIC(WRITE, PLconstH, 0x0861);    // PL Constant MSB (default)
-  CommEnergyIC(WRITE, PLconstL, 0x4C68);    // PL Constant LSB (default)
+  CommEnergyIC(WRITE, PLconstL, 0xC468);    // PL Constant LSB (default)
   CommEnergyIC(WRITE, MMode0, 0x0287);      // Mode Config (60 Hz, 3P4W)
   CommEnergyIC(WRITE, MMode1, 0x5555);      // 0x5555 (x2) // 0x0000 (1x)
   CommEnergyIC(WRITE, PStartTh, 0x0000);    // Active Startup Power Threshold
@@ -500,7 +500,7 @@ void ATM90E36::begin()
   CommEnergyIC(WRITE, PPhaseTh, 0x0000);    // Active Phase Threshold
   CommEnergyIC(WRITE, QPhaseTh, 0x0000);    // Reactive Phase Threshold
   CommEnergyIC(WRITE, SPhaseTh, 0x0000);    // Apparent  Phase Threshold
-  CommEnergyIC(WRITE, CSZero, 0xC850);      // Checksum 0
+  CommEnergyIC(WRITE, CSZero, 0x40C8);      // Checksum 0
   
   //Set metering calibration values (CALIBRATION)
   CommEnergyIC(WRITE, CalStart, 0x5678);    // Metering calibration startup 
@@ -552,4 +552,5 @@ void ATM90E36::begin()
   CommEnergyIC(WRITE, AdjStart, 0x8765);    // 0x6886 //0x5678 //8765);  
 
   //CommEnergyIC(WRITE, SoftReset, 0x789A);   // Perform soft reset  
+
 }
