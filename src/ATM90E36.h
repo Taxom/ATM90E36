@@ -35,7 +35,7 @@
 #define	PMIrmsA 0x18
 #define	PMIrmsB 0x19
 #define	PMIrmsC 0x1A
-#define	PMConfig 0x10B
+#define	PMConfig 0x1B
 #define	PMAvgSamples 0x1C
 #define PMIrmsLSB 0x1D
 
@@ -310,4 +310,5 @@
 		/* Checksum Function */
 		bool calibrationError();
 	};
+
 #endif
